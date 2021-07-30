@@ -13,11 +13,6 @@ bool LinkedBag<ItemType>::removeSecondNode340()
 
     Node<ItemType> *curPtr = headPtr;
 
-    if (curPtr != nullptr)
-    {
-        cout << "curPtr is not NULL" << endl;
-    }
-
     while ((curPtr != nullptr) && (i < itemCount))
     {
         if (i == 1)
@@ -37,56 +32,20 @@ bool LinkedBag<ItemType>::removeSecondNode340()
 template <typename ItemType>
 bool LinkedBag<ItemType>::addEnd340(const ItemType &newEntry)
 {
-    //    Node<ItemType> *curPtr = headPtr;
-
     int i = 0;
 
-    //    unique_ptr<Node<ItemType>> samplePtr{make_unique<Node<ItemType>>()};
+    /* I'm using a shared pointer, the professor showed this to the class */
     shared_ptr<Node<ItemType>> cPtr = make_shared<Node<ItemType>>();
-    //shared_ptr<Node<ItemType>> headPtr{cPtr};
-    shared_ptr<Node<ItemType>> head;
 
-    //unique_ptr<Node<ItemType>> ccPtr(new Node<ItemType>());
-    shared_ptr<LinkedBag<ItemType>> hPtr;
-
+    /* I am pointing cPtr to the headPtr so I can iterate */
     cPtr->setNext(headPtr);
-
-    //cPtr = getPointerTo(headPtr);
-    //cPtr = getPointerTo(headPtr);
-    /*
-    cPtr->setItem("Money");
-    cout << "message > " << cPtr->getItem() << endl;
-    */
-
-    cout << "--->" << cPtr << endl;
-
-    //   cout << "Sample Pointer: " << samplePtr->getNext() << endl;
-
-    //  samplePtr->setItem(newEntry);
-    // cout << "SSSAAAMMMPPPLLLEEE: " << samplePtr->getItem() << endl;
-    if (cPtr != nullptr)
-    {
-        cout << "cPtr is NOT NULL" << endl;
-        cout << "Item Count" << itemCount << endl;
-    }
-    else
-    {
-        cout << "cPtr is NULL - damn!" << endl;
-    }
-
-    cout << "newEntry: " << newEntry << endl;
 
     while ((cPtr != nullptr) && (i <= itemCount))
     {
         if (i == itemCount - 1)
         {
             add(newEntry);
-            //add(newEntry);
             return 1;
-        }
-        else
-        {
-            //cPtr = cPtr->getNext();
         }
         i++;
     }
