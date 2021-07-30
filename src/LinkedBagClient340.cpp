@@ -37,7 +37,6 @@ int main()
 	displayBag(bag);
 
 	// 2. Remove the second node
-	/*
 	cout << "\n--->>>>> Test 2 --->>>>>";
 	cout << "\n !removeSecondNode340()... ";
 	bag->removeSecondNode340();
@@ -49,7 +48,6 @@ int main()
 	cout << "\n !removeSecondNode340()... ";
 	bag->removeSecondNode340();
 	displayBag(bag);
-	*/
 
 	// 3. Add a node to the end of the linked list
 	cout << "\n--->>>>> Test 3 --->>>>>";
@@ -64,7 +62,6 @@ int main()
 	bag->addEnd340("0-ZERO");
 	displayBag(bag);
 
-	/*
 	// 4. getCurrentSize() - Iterative
 	cout << "\n--->>>>> Test 4 --->>>>>";
 	cout << "\n !getCurrentSize340Iterative - Iterative... ";
@@ -76,15 +73,13 @@ int main()
 	cout << "\n !getCurrentSize340Recursive() - Recursive... ";
 	cout << "\n  ---> Current size: " << bag->getCurrentSize340Recursive();
 	displayBag(bag);
-	*/
-	/*
-		
+
 	// 6. getCurrentSize() - Recursive w/ no helper function
 	cout << "\n--->>>>> Test 6 --->>>>>";
 	cout << "\n !getCurrentSize340RecursiveNoHelper() - Recursive... ";
 	cout << "\n  ---> Current size: " << bag->getCurrentSize340RecursiveNoHelper();
 	displayBag(bag);
-	
+
 	// 7. getFrequencyOf() - Recursive
 	cout << "\n--->>>>> Test 7 --->>>>>";
 
@@ -130,7 +125,6 @@ int main()
 	displayBag(bag);
 
 	cout << endl;
-	*/
 	return 0;
 }
 

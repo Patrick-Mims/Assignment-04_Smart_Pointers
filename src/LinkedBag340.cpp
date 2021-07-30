@@ -11,17 +11,29 @@ bool LinkedBag<ItemType>::removeSecondNode340()
 {
     static int i = 0;
 
-    Node<ItemType> *curPtr = headPtr;
+    //    Node<ItemType> *curPtr = headPtr;
+
+    /* I'm using a shared pointer, the professor showed this to the class */
+    shared_ptr<Node<ItemType>> curPtr = make_shared<Node<ItemType>>();
+
+    /* I am pointing cPtr to the headPtr so I can iterate */
+    /* using a raw pointer, it would look like this: cPtr = headPtr; */
+
+    /* I can remove one item, but the second one I can't figure it out. 
+       I can't advance the list like this: curPtr = curPtr->getNext() 
+    */
+    curPtr->setNext(headPtr);
 
     while ((curPtr != nullptr) && (i < itemCount))
     {
         if (i == 1)
         {
             remove(curPtr->getItem());
+            itemCount--;
         }
         else
         {
-            curPtr = curPtr->getNext();
+            curPtr->getNext();
         }
         i++;
     }
@@ -57,7 +69,12 @@ bool LinkedBag<ItemType>::addEnd340(const ItemType &newEntry)
 template <typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340()
 {
-    Node<ItemType> *curPtr = headPtr;
+    /* I am using a shared pointer */
+    shared_ptr<Node<ItemType>> curPtr = make_shared<Node<ItemType>>();
+
+    /* I am pointing cPtr to the headPtr so I can iterate */
+    /* using a raw pointer, it would look like this: cPtr = headPtr; */
+    curPtr->setNext(headPtr);
 
     int cnt = 0;
 
@@ -71,12 +88,13 @@ ItemType LinkedBag<ItemType>::removeRandom340()
     {
         if (cnt == randomItem)
         {
+            cout << "Removing Item: " << curPtr->getItem() << endl;
             itemRemoved = curPtr->getItem();
             remove(curPtr->getItem());
         }
         else
         {
-            curPtr = curPtr->getNext();
+            curPtr->getNext();
         }
         cnt++;
     }
@@ -87,6 +105,7 @@ template <class ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Iterative() const
 {
     int count = 0;
+    //.vector < shared_ptr<LinkedBag<ItemType>> bag {make_shared<LinkedBag<ItemType>>()};
     vector<ItemType> bag = toVector();
     vector<string>::iterator it;
     for (it = bag.begin(); it != bag.end(); ++it)
@@ -99,8 +118,13 @@ int LinkedBag<ItemType>::getCurrentSize340Iterative() const
 template <class ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Recursive() const
 {
-    Node<ItemType> *curPtr = headPtr;
-    return getCurrentSize340RecursiveHelper(curPtr);
+    //Node<ItemType> *curPtr = headPtr;
+    /* I'm using a shared pointer, the professor showed this to the class */
+    shared_ptr<Node<ItemType>> curPtr = make_shared<Node<ItemType>>();
+
+    curPtr->setNext(headPtr);
+    /* I am passing a smart pointer to a function */
+    return getCurrentSize340RecursiveHelper(curPtr.get());
 }
 
 /* private method */
@@ -118,7 +142,10 @@ int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType> *cur) c
 template <class ItemType>
 int LinkedBag<ItemType>::getCurrentSize340RecursiveNoHelper() const
 {
-    Node<ItemType> *curPtr = headPtr;
+    /* I'm using a shared pointer, the professor showed this to the class */
+    shared_ptr<Node<ItemType>> curPtr = make_shared<Node<ItemType>>();
+
+    curPtr->setNext(headPtr);
     int cnt = 0;
     while ((curPtr != nullptr) && (cnt < itemCount))
     {
@@ -139,7 +166,11 @@ int getFrequencyOf340RecursiveNoHelper(const ItemType &theItem)
 template <class ItemType>
 int LinkedBag<ItemType>::getFrequencyOf340Recursive(const ItemType &value) const
 {
-    Node<ItemType> *curPtr = headPtr;
+    //Node<ItemType> *curPtr = headPtr;
+
+    shared_ptr<Node<ItemType>> curPtr = make_shared<Node<ItemType>>();
+
+    curPtr->setNext(headPtr);
 }
 
 template <class ItemType>
