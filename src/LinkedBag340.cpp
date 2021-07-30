@@ -38,6 +38,7 @@ bool LinkedBag<ItemType>::addEnd340(const ItemType &newEntry)
     shared_ptr<Node<ItemType>> cPtr = make_shared<Node<ItemType>>();
 
     /* I am pointing cPtr to the headPtr so I can iterate */
+    /* using a raw pointer, it would look like this: cPtr = headPtr; */
     cPtr->setNext(headPtr);
 
     while ((cPtr != nullptr) && (i <= itemCount))
